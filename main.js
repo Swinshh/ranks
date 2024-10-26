@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rankTitle = document.getElementsByClassName('rankTitle')[0];
       const rankIcon = document.getElementById('rankIcon');
       const bwStats = dados.response.stats.bedwars;
-      const clanName = dados.response.clan.tag;
+      const clanName = dados.response.clan ? dados.response.clan.tag : null; // Define "clanName"
 
       // Verifica se a estrutura de resposta é válida
       if (dados && dados.response && dados.response.stats && dados.response.stats.bedwars) {
@@ -123,7 +123,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         graphic(fkdr, wlr, bblr, rankColor); 
         comment.innerHTML = comments;
-        nick.innerHTML = `${player} [${clanName}]`;
+        
+        if (clanName) {
+          nick.innerHTML = `${player} [${clanName}]`;
+          console.log('tem clan');
+        } else {
+          nick.innerHTML = `${player}`;
+          console.log('não tem clan');
+        }
         headMine.src = 'https://mineskin.eu/armor/body/' + player + '/100.png';
         rankIcon.src = rankIcos;
         result.innerHTML = fkdr.toString();
