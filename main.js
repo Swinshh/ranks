@@ -4,8 +4,6 @@ import graphic from './scripts/graph.js';
 import theme from './scripts/theme.js';
 
 let resultsPainel = document.getElementsByClassName('results')[0]; // pegar painel
-let themeButton = document.getElementsByClassName('theme-button')[0]; // Pega o botão de tema
-theme(themeButton);
 
 // Variável para status de atualização
 let isUpdating = false; // Inicia como falso
