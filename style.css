@@ -1,0 +1,381 @@
+* {
+  box-sizing: border-box;
+  font-optical-sizing: auto;
+  font-family: "Montserrat", serif;
+  font-style: normal;
+  font-optical-sizing: auto;
+  scroll-behavior: smooth;
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  background-color: #f0f0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f9;
+  margin: 0;
+}
+
+:root {
+  --low-white-color: #cfcfcf;
+  --white-color: #f2f2f2;
+  --black-text: #1a1a1a;
+  --low-black-text: #1a1a1a90;
+  --orange-color: #ff5500;
+  --low-orange-color: #ff550075;
+}
+
+.hidden-left {
+  opacity: 0;
+  transition: all 1.5s;
+  filter: blur(1px);
+  transform: translateX(-100%);
+}
+
+.show-left {
+  opacity: 1;
+  transition: all 1.5s;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.hidden-right {
+  opacity: 0;
+  transition: all 1.5s;
+  filter: blur(1px);
+  transform: translateX(100%);
+}
+
+.show-right {
+  opacity: 1;
+  transition: all 1.5s;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.hidden-bottom {
+  opacity: 0;
+  transition: all 1.5s;
+  filter: blur(1px);
+  transform: translateY(100%);
+}
+
+.show-bottom {
+  opacity: 1;
+  transition: all 1.5s;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.hidden-left-none {
+  opacity: 0;
+  transition: all 1.5s;
+  display: none;
+  filter: blur(1px);
+  transform: translateX(-100%);
+}
+
+.show-left-none {
+  opacity: 1;
+  display: block;
+  transition: all 1.5s;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/*HOME PAGE*/
+.text-result {
+  font-weight: 400;
+}
+
+/*textos da página principal*/
+h1,
+h2 {
+  font-weight: 600;
+}
+
+h1 {
+  color: var(--black-text);
+}
+
+h2 {
+  color: var(--low-black-text);
+}
+
+#title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#comment {
+  color: var(--low-black-text);
+  font-weight: 400;
+  font-size: 11pt;
+  margin: 12px 0px;
+  width: 80%;
+  flex-wrap: wrap;
+}
+
+.results {
+  display: none;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+.stats {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  align-items: start;
+  font-size: 8pt;
+}
+
+.stats-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setRank {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#rankIcon,
+#rankDisplay {
+  margin-left: 8px;
+}
+
+/*container form da barra de pesquisa moderna*/
+form {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 0 24px 10px rgba(0, 0, 0, 0.1);
+  padding: 8px 12px;
+  max-width: 400px;
+  width: 100%;
+}
+
+/*barra de pesquisa de nicknames*/
+#searchPlayer {
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  color: #333;
+}
+
+#searchPlayer::placeholder {
+  color: #aaa;
+}
+
+/*botão de pesquisa*/
+#searchButton {
+  background-color: var(--low-black-text);
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-left: 8px;
+  transition: background-color 0.3s;
+}
+
+#searchButton:hover {
+  background-color: var(--orange-color);
+}
+
+/*Parte de baixo do site*/
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*estilização dos textos de baixo*/
+#footer-text {
+  font-weight: 600;
+  font-size: 11pt;
+}
+
+/*estilização diferente para a versão do site*/
+#version {
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--low-black-text);
+}
+
+a {
+  text-decoration: none;
+  color: var(--low-black-text);
+}
+a:hover {
+  color: var(--orange-color);
+}
+
+/*Div do icone de dúvidas*/
+#questions {
+  display: flex;
+  position: relative;
+  align-items: center; /*Deixa centralizado o filho*/
+  flex-direction: column; 
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+}
+
+/*Img do icone de dúvidas*/
+#questionsImg {
+  opacity: 50%;
+}
+/* Estilo da caixa de texto (tooltip) */
+.tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden; 
+  width: auto;
+  height: 32px;
+  background-color: var(--black-text);
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  position: absolute;
+  top: 75%; 
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 5px;
+  white-space: nowrap;
+  font-size: 8pt;
+}
+
+/* Mostra a tooltip quando o mouse está sobre o link */
+#questions:hover .tooltip {
+  visibility: visible;
+}
+
+#questions:hover #questionsImg {
+  opacity: 100%;
+}
+
+/*QUESTION PAGE*/
+.ranksContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 76%;
+  height: auto;
+  padding: 24px 0px;
+}
+
+.rankTop{
+  display: flex;
+  align-items: center;
+  width: 180px;
+  color: var(--low-black-text);
+  cursor: context-menu;
+}
+
+
+
+.headInfo{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 48px 12px;
+}
+
+.headInfo h1{
+  color: var(--black-text);
+  font-weight: 600;
+  font-size: 14pt;
+  cursor: context-menu;
+}
+
+.headInfo div{
+  margin-left: 12px;
+}
+
+.rankDesc{
+  font-size: 11pt;
+  font-weight: 400;
+  color: var(--low-black-text);
+}
+
+.back-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px; /* Definindo um tamanho fixo para o botão */
+  height: 32px;
+  background-color: var(--low-black-text);
+  color: #ffffff;
+  font-size: 11pt;
+  border-radius: 50%; /* Torna o botão redondo */
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: var(--orange-color);
+  transform: scale(1.1);
+}
+
+.back-button:hover .arrow {
+  color: var(--white-color);
+}
+
+
+/*theme*/
+header{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 6px 12px;
+  width: 100%;
+}
+
+.theme-container{
+  display: flex;
+  width: auto; /*o dobro do width para criar animação de deslize*/
+  height: 32px;
+  border-radius: 5%; /*deixa as bordas arredondas*/
+  box-shadow: 0 12px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-button{
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 12px;
+  height: 32px;
+  border-radius: 5%; /*deixa o botão redondo*/
+  background-color: #fbfbfb;
+  outline: none;
+  border-style: none;
+}
+
