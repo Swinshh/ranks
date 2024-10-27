@@ -78,78 +78,50 @@ document.addEventListener('DOMContentLoaded', () => {
         
         switch (playerRank) {
           case 'Divine':
-            comments = "Esse cara é um Deus no jogo, tem grandes chances de ganhar qualquer partida.";
+            comments = "Jogador excepcional, capaz de dominar qualquer partida com grande habilidade.";
             rankColor = '#FF5500';
             rankIcos = './assets/icos/Rank Divine.png';
             break;
           case 'SS':
-            comments = "Esse cara é perigoso, muito inteligente e capaz de ganhar.";
+            comments = "Um adversário impressionante, muito estratégico e com grandes chances de vitória.";
             rankColor = '#FFC700';
             rankIcos = './assets/icos/Rank SS.png';
             break;
           case 'S':
-            comments = "Um dos melhores do server, mas não é impossível de ganhar";
+            comments = "Um dos melhores do servidor, um desafio que merece respeito.";
             rankColor = '#795E00';
             rankIcos = './assets/icos/Rank S.png';
             break;
           case 'A':
-            comments = "Um bom player, mas não ganha todas";
+            comments = "Jogador consistente, com bastante habilidade e boas chances de vencer.";
             rankColor = '#0038C8';
             rankIcos = './assets/icos/Rank A.png';
             break;
           case 'B':
-            comments = "Provavelmente gosta de ir rápido nas partidas e joga no automático";
+            comments = "Gosta de um bom ritmo e mantém uma jogabilidade equilibrada.";
             rankColor = '#455E8D';
             rankIcos = './assets/icos/Rank B.png';
             break;
           case 'C':
-            comments = "Tem muito a melhorar, mas joga melhor que boa parte";
+            comments = "Jogador esforçado, com boas habilidades e potencial para crescer.";
             rankColor = '#8E6262';
             rankIcos = './assets/icos/Rank C.png';
             break;
           case 'D':
-            comments = "Dificilmente ganha alguma partida";
+            comments = "Pode não ganhar todas, mas continua jogando e aprendendo a cada partida.";
             rankColor = '#969696';
             rankIcos = './assets/icos/Rank D.png';
             break;
           case 'E':
-            comments = "Horrível, deve ter começado agora ou joga pouco";
+            comments = "No começo da jornada, mas cada partida é uma nova chance para evoluir.";
             rankColor = '#4B3621';
+            rankIcos = './assets/icos/Rank E.png';
             break;
           default:
             comments = "erro";
             break;
         }
-
-        graphic(fkdr, wlr, bblr, rankColor); 
-        comment.innerHTML = comments;
         
-        if (clanName) {
-          nick.innerHTML = `${player} [${clanName}]`;
-          console.log('tem clan');
-        } else {
-          nick.innerHTML = `${player}`;
-          console.log('não tem clan');
-        }
-        headMine.src = 'https://mineskin.eu/armor/body/' + player + '/100.png';
-        rankIcon.src = rankIcos;
-        result.innerHTML = fkdr.toString();
-        wlrate.innerHTML = wlr.toString();
-        bblRATE.innerHTML = bblr.toString();
-        rankDisplay.innerHTML = playerRank;
-        rankTitle.style.color = rankColor;
-
-        isUpdating = false; // Finaliza o status de atualização
-        resultsPainel.style.display = 'flex'; // Mostra o painel com dados prontos
-
-      } else {
-        console.log('Dados de Bedwars não encontrados para esse jogador.');
-      }
-    } catch (error) {
-      console.error("Erro ao buscar dados:", error);
-      isUpdating = false; // Define como falso em caso de erro
-    }
-  }
 
   button.addEventListener('click', script);
   search.addEventListener('keydown', (event) => {
