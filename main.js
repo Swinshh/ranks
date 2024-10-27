@@ -123,6 +123,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
 
+        graphic(fkdr, wlr, bblr, rankColor); 
+        comment.innerHTML = comments;
+        
+        if (clanName) {
+          nick.innerHTML = `${player} [${clanName}]`;
+          console.log('tem clan');
+        } else {
+          nick.innerHTML = `${player}`;
+          console.log('não tem clan');
+        }
+        headMine.src = 'https://mineskin.eu/armor/body/' + player + '/100.png';
+        rankIcon.src = rankIcos;
+        result.innerHTML = fkdr.toString();
+        wlrate.innerHTML = wlr.toString();
+        bblRATE.innerHTML = bblr.toString();
+        rankDisplay.innerHTML = playerRank;
+        rankTitle.style.color = rankColor;
+
+        isUpdating = false; // Finaliza o status de atualização
+        resultsPainel.style.display = 'flex'; // Mostra o painel com dados prontos
+
+      } else {
+        console.log('Dados de Bedwars não encontrados para esse jogador.');
+      }
+    } catch (error) {
+      console.error("Erro ao buscar dados:", error);
+      isUpdating = false; // Define como falso em caso de erro
+    }
+  }
+
   button.addEventListener('click', script);
   search.addEventListener('keydown', (event) => {
     if (event.key === "Enter") {
