@@ -22,10 +22,12 @@ function animations(){
     const elementsRight = document.querySelectorAll('.hidden-right');
     const elementsLeftNone = document.querySelectorAll('.hidden-left-none');
     const elementsBottom = document.querySelectorAll('.hidden-bottom');
+    const elementsTop = document.querySelectorAll('.hidden-top');
     
-    observeElements(elementsLeft, 'show-left');
-    observeElements(elementsRight, 'show-right');
-    observeElements(elementsBottom, 'show-bottom');
+    observeElements(elementsLeft, 'show-horizontal');
+    observeElements(elementsRight, 'show-horizontal');
+    observeElements(elementsBottom, 'show-vertical');
+    observeElements(elementsTop, 'show-vertical');
     observeElements(elementsLeftNone, 'show-left-none');
 
 }
