@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-37DZ574DPY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-37DZ574DPY');
-    </script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
+       <!-- Google tag (gtag.js) -->
+       <script async src="https://www.googletagmanager.com/gtag/js?id=G-37DZ574DPY"></script>
+       <script>
+         window.dataLayer = window.dataLayer || [];
+         function gtag(){dataLayer.push(arguments);}
+         gtag('js', new Date());
+   
+         gtag('config', 'G-37DZ574DPY');
+       </script>
+       
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -22,51 +22,74 @@
     <title>Ranks</title>
 </head>
 <body>
-
+    <div class="content">
+            <!--texto no topo com título e descrição-->
     <div id="title-container">
         <h1 id="searchTitle">Busque seu Rank</h1>
-        <p>Veja quão forte são suas habilidades e compare com outros</p>
+        <p id="searchDesc">Veja quão forte são suas habilidades e compare com outros</p>
     </div>
 
+
+    <!--barra de pesquisa de players-->
     <form method="get" onsubmit="return false;">
         <input type="text" id="searchPlayer" placeholder="nickname..."/>
         <input type="button" value="buscar" id="searchButton">
     </form>
-    
+
+    <!--container para resultados que vem de uma api-->
     <div class="results">
+
+        <!--local onde a imagem aparece com normalmente 100px-->
         <img class="hidden-bottom" id="headMine" src="">
 
+        <!--data é o container que contem a caixa de resultados da pesquisa-->
         <div class="hidden-right data">
+
+            <!--class="setRank" é o título principal, por isso ten cores e detalhes aprofundados-->
             <h1 class="setRank rankTitle">Rank: <strong id="rankDisplay" class="text-result"></strong>
+                <!--icone de rank do player-->
                 <img id="rankIcon" src=""  width="32px">
+
+                <!--id="questions" serve tanto para clicar quanto para alinhar a id="questionsImg"-->
                 <a href="ranks.html" id="questions">
                     <img id="questionsImg" src="./assets/icos/question icon.png" width="16px">
                     <div class="tooltip" id="tooltip">clique e saiba mais sobre os ranks</div>
                 </a>
             </h1>
                 
-            <h2>Nick: <strong id="nickname" class="text-result"></strong></h2>
+            <!--Esse trecho serve para exibir o nick do player que foi pesquisado-->
+            <h2 id="nick">Nick: <strong id="nickname" class="text-result"></strong></h2>
+
+            <!--Esse container class="stats" serve para mostrar as taxas de FKDR, WRL e BBLR-->
             <div class="stats">
+                <!--class="stats-data" são os filhos de class="stats"-->
                 <h2 class="stats-data">FKDR<strong id="result" class="text-result"></strong></h2>
                 <h2 class="stats-data">WLR<strong id="wlrate" class="text-result"></strong></h2>
                 <h2 class="stats-data">BBLR<strong id="bblRATE" class="text-result"></strong></h2>
             </div>
+
+            <!--Esse trecho é um comentário sobre como o jogador é jogando-->
             <h1 id="comment"></h1>
         </div>
 
-        <canvas class="hidden-right" id="triangleChart" width="300" height="300"></canvas>
+        <!--Desenha um gráfico usando a biblioteca chart.js com os dados de stats-->
+            <canvas id="triangleChart"></canvas>
+
 
     </div>
 
 
     <footer>
-        <p id="version">Alpha 0.0.4</p>
+        <p id="version">Alpha 0.1.0</p>
         
         <h2 id="footer-text">Esse site foi desenvolvido por <a href="http://discordapp.com/users/1104883571426078800"
             target="_blank" rel="noopener noreferrer">Swinsh</a> 
             e não possui vínculos com o servidor <a href="http://mush.com.br" target="_blank" rel="noopener noreferrer">MushMC</a></h2>
             
     </footer>
+
+    </div>
+
 
     <script type="module" src="main.js"></script>
 
