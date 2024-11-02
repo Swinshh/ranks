@@ -15,14 +15,21 @@ html {
 }
 
 body {
-  background-color: #f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f4f4f9;
+}
+
+.content{
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  background-color: #f4f4f9;
-  margin: 0;
+  width: 80%;
+  height: auto;
 }
 
 :root {
@@ -41,12 +48,6 @@ body {
   transform: translateX(-100%);
 }
 
-.show-left {
-  opacity: 1;
-  transition: all 1.5s;
-  filter: blur(0);
-  transform: translateX(0);
-}
 
 .hidden-right {
   opacity: 0;
@@ -55,7 +56,8 @@ body {
   transform: translateX(100%);
 }
 
-.show-right {
+
+.show-horizontal {
   opacity: 1;
   transition: all 1.5s;
   filter: blur(0);
@@ -69,11 +71,19 @@ body {
   transform: translateY(100%);
 }
 
-.show-bottom {
+
+.show-vertical {
   opacity: 1;
   transition: all 1.5s;
   filter: blur(0);
   transform: translateY(0);
+}
+
+.hidden-top {
+  opacity: 0;
+  transition: all 1.5s;
+  filter: blur(1px);
+  transform: translateY(-100%);
 }
 
 .hidden-left-none {
@@ -93,6 +103,9 @@ body {
 }
 
 /*HOME PAGE*/
+#title-container{
+  padding: 32px 0px;
+}
 .text-result {
   font-weight: 400;
 }
@@ -115,6 +128,7 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
 }
 
 #comment {
@@ -126,22 +140,37 @@ h2 {
   flex-wrap: wrap;
 }
 
+
 .results {
   display: none;
-  width: 80%;
+  height: auto;
   justify-content: space-evenly;
   align-items: center;
-  padding: 12px;
   flex-wrap: wrap;
+  padding: 32px 0px;
   overflow: hidden;
+
+}
+
+
+#headMine{
+  padding: 32px;
 }
 .stats {
   display: flex;
   flex-direction: row;
   width: 80%;
+  height: auto;
   justify-content: space-between;
   align-items: start;
+  flex-wrap: wrap;
   font-size: 8pt;
+}
+
+.data{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .stats-data {
@@ -170,14 +199,12 @@ form {
   box-shadow: 0 24px 10px rgba(0, 0, 0, 0.1);
   padding: 8px 12px;
   max-width: 400px;
-  width: 100%;
 }
 
 /*barra de pesquisa de nicknames*/
 #searchPlayer {
   border: none;
   outline: none;
-  flex: 1;
   padding: 8px 10px;
   font-size: 16px;
   border-radius: 20px;
@@ -205,8 +232,19 @@ form {
   background-color: var(--orange-color);
 }
 
+
+#triangleChart {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 300px;
+  overflow: hidden;
+}
+
 /*Parte de baixo do site*/
 footer {
+  padding: 32px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -282,11 +320,10 @@ a:hover {
 /*QUESTION PAGE*/
 .ranksContainer{
   display: flex;
-  justify-content: center;
   flex-direction: column;
   width: 76%;
   height: auto;
-  padding: 24px 0px;
+  padding: 32px 0px;
 }
 
 .rankTop{
@@ -296,8 +333,6 @@ a:hover {
   color: var(--low-black-text);
   cursor: context-menu;
 }
-
-
 
 .headInfo{
   display: flex;
@@ -379,4 +414,52 @@ header{
   outline: none;
   border-style: none;
 }
+
+@media only screen and (max-width: 600px) {
+
+  #title-container{
+    margin: 24px 0px;
+  }
+
+
+  #searchTitle{
+    font-size: 16pt;
+  }
+
+  #searchDesc{
+    font-size: 10pt;
+    text-align: center;
+  }
+
+
+  .results {
+    flex-direction: row-reverse;
+    height: 100vh;
+    overflow-y: hidden; /* Ou overflow-y conforme o sentido do overflow */
+}
+  .setRank{
+    padding: 32px 0px;
+  }
+
+  .data{
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #headMine{
+    order: 2;
+    padding: 12px 0px;
+  }
+
+
+
+  #footer-text {
+    font-weight: 600;
+    font-size: 11pt;
+    text-align: center;
+  }
+
+}
+
 
