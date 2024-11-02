@@ -1,14 +1,26 @@
-import buscarDadosJogador from './scripts/api.js';
-import animations from './scripts/animations.js';
-import graphic from './scripts/graph.js';
-import theme from './scripts/theme.js';
+
+import buscarDadosJogador from './scripts/api.js'; // importa dados da api
+import animations from './scripts/animations.js'; // importa animações de tela
+import graphic from './scripts/graph.js'; // importa um sistema de gráficos.
+import theme from './scripts/theme.js'; // importa um sistema pra tema
 
 let resultsPainel = document.getElementsByClassName('results')[0]; // pegar painel
+let fix_skin_size = 72 // Valor original
+
+
 
 // Variável para status de atualização
 let isUpdating = false; // Inicia como falso
 
-animations();
+animations(); // Roda as animação de './scripts/animations.js'.
+
+
+// adiciona um evento que indetifica a tela mudando
+window.addEventListener('resize', () => {
+  const chart = document.getElementById('triangleChart'); // Pega o gráfico 
+  chart.width = chart.parentElement.clientWidth;
+  chart.height = chart.parentElement.clientWidth;
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const search = document.getElementById('searchPlayer');
@@ -22,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+
+
     // Ativa o status de atualização e oculta o painel
     isUpdating = true;
     resultsPainel.style.display = 'none';
@@ -29,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const dados = await buscarDadosJogador(player);
       const nick = document.getElementById('nickname');
+      const erroDisplay = document.getElementById('errorDisplay')
       const result = document.getElementById('result');
       const wlrate = document.getElementById('wlrate');
       const bblRATE = document.getElementById('bblRATE');
@@ -133,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
           nick.innerHTML = `${player}`;
           console.log('não tem clan');
         }
-        headMine.src = 'https://mineskin.eu/armor/body/' + player + '/100.png';
+        headMine.src = 'https://mineskin.eu/armor/body/' + player + '/' + fix_skin_size.toString() +'.png';
         rankIcon.src = rankIcos;
         result.innerHTML = fkdr.toString();
         wlrate.innerHTML = wlr.toString();
@@ -149,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (error) {
       console.error("Erro ao buscar dados:", error);
+
       isUpdating = false; // Define como falso em caso de erro
     }
   }
