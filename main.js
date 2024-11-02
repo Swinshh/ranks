@@ -14,13 +14,6 @@ let isUpdating = false; // Inicia como falso
 animations(); // Roda as animação de './scripts/animations.js'.
 
 
-// adiciona um evento que indetifica a tela mudando
-window.addEventListener('resize', () => {
-  const chart = document.getElementById('triangleChart'); // Pega o gráfico 
-  chart.width = chart.parentElement.clientWidth;
-  chart.height = chart.parentElement.clientWidth;
-});
-
 document.addEventListener('DOMContentLoaded', () => {
   const search = document.getElementById('searchPlayer');
   const button = document.getElementById('searchButton');
