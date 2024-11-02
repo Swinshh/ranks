@@ -1,4 +1,3 @@
-
 import buscarDadosJogador from './scripts/api.js'; // importa dados da api
 import animations from './scripts/animations.js'; // importa animações de tela
 import graphic from './scripts/graph.js'; // importa um sistema de gráficos.
