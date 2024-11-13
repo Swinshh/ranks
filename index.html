@@ -38,12 +38,13 @@
 
     <!--container para resultados que vem de uma api-->
     <div class="results">
-
+        
         <!--local onde a imagem aparece com normalmente 100px-->
-        <img class="hidden-bottom" id="headMine" src="">
+        <img class="" id="headMine" src="">
 
         <!--data é o container que contem a caixa de resultados da pesquisa-->
         <div class="hidden-right data">
+
 
             <!--class="setRank" é o título principal, por isso ten cores e detalhes aprofundados-->
             <h1 class="setRank rankTitle">Rank: <strong id="rankDisplay" class="text-result"></strong>
@@ -60,6 +61,7 @@
             <!--Esse trecho serve para exibir o nick do player que foi pesquisado-->
             <h2 id="nick">Nick: <strong id="nickname" class="text-result"></strong></h2>
 
+
             <!--Esse container class="stats" serve para mostrar as taxas de FKDR, WRL e BBLR-->
             <div class="stats">
                 <!--class="stats-data" são os filhos de class="stats"-->
@@ -68,8 +70,29 @@
                 <h2 class="stats-data">BBLR<strong id="bblRATE" class="text-result"></strong></h2>
             </div>
 
+            <div class="progress-container">
+                <div class="total-progress">
+                    <img src="" class="actual-rank rankImg">
+                    <div class="bar-conteiner">
+                        <div class="bar-total-progress">
+                            <h1 class="progress-percent"></h1>
+                        </div>
+                    </div>
+                    <img src="" class="next-rank
+                    rankImg">
+                </div>
+                <div class="selectors">
+                    <h4 class="options">TOTAL</h4>
+                    <h4 class="options">FKDR</h4>
+                    <h4 class="options">WLR</h4>
+                    <h4 class="options">BBLR</h4>
+                </div>
+            </div>
+
             <!--Esse trecho é um comentário sobre como o jogador é jogando-->
             <h1 id="comment"></h1>
+
+
         </div>
 
         <!--Desenha um gráfico usando a biblioteca chart.js com os dados de stats-->
@@ -80,7 +103,7 @@
 
 
     <footer>
-        <p id="version">Alpha 0.1.0</p>
+        <p id="version">Alpha 0.2.0</p>
         
         <h2 id="footer-text">Esse site foi desenvolvido por <a href="http://discordapp.com/users/1104883571426078800"
             target="_blank" rel="noopener noreferrer">Swinsh</a> 
