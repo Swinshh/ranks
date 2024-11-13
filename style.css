@@ -177,6 +177,9 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 12px;
+  padding: 4px 12px;
+  
 }
 
 .setRank {
@@ -184,6 +187,8 @@ h2 {
   flex-direction: row;
   align-items: center;
 }
+
+
 
 #rankIcon,
 #rankDisplay {
@@ -241,6 +246,79 @@ form {
   max-height: 300px;
   overflow: hidden;
 }
+
+.progress-container {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 12px 0px;
+}
+
+.total-progress {
+  display: flex;
+  align-items: center;
+  width: 80%;
+}
+
+.bar-conteiner {
+  display: flex;
+  width: 100%;
+  height: 16px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 10px;
+}
+
+.bar-total-progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: var(--white-color);
+  
+  height: auto;
+  background-color: var(--low-black-text); /* Cor da barra de progresso */
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.progress-percent{
+  font-size: 8pt;
+  color: var(--white-color);
+}
+
+.rankImg{
+  width: 16px;
+  height: 16px;
+}
+
+.selectors{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+  margin: 12px 0px;
+  flex-wrap: wrap;
+}
+
+.options{
+  background-color: var(--low-black-text);
+  color: var(--white-color);
+  font-weight: 600;
+  font-size: 6pt;
+  padding: 8px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 20%;
+}
+
+.selected{
+  opacity: 100%;
+  border-color: var(--black-text);
+}
+
 
 /*Parte de baixo do site*/
 footer {
@@ -437,6 +515,25 @@ header{
     height: 100vh;
     overflow-y: hidden; /* Ou overflow-y conforme o sentido do overflow */
 }
+
+.progress-container{
+  justify-content: center;
+  align-items: center;
+}
+
+.selectors{
+  flex-grow: 1;
+}
+
+.options{
+  padding: 8px 4%;
+  width: 96%;
+  text-align: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--white-color);
+
+}
   .setRank{
     padding: 32px 0px;
   }
@@ -461,5 +558,4 @@ header{
   }
 
 }
-
 
