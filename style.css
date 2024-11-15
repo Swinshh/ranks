@@ -350,10 +350,6 @@ form {
   align-items: center;
 }
 
-.comment-date{
-  text-align: right;
-}
-
 
 /*Parte de baixo do site*/
 footer {
@@ -595,3 +591,5 @@ header{
   }
 
 }
+
+
