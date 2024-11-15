@@ -4,8 +4,14 @@ import graphic from './scripts/graph.js'; // importa um sistema de gráficos.
 import theme from './scripts/theme.js'; // importa um sistema pra tema
 
 let resultsPainel = document.getElementsByClassName('results')[0]; // pegar painel
-let fix_skin_size = 72 // Valor original
 
+let commentsContainer = document.getElementsByClassName('comments-container')[0]; // pegar comments
+let fix_skin_size = 100; // valor inicial
+
+
+window.addEventListener('resize', () => {
+  fix_skin_size = window.innerWidth <= 600 ? 48 : 100;
+});
 
 
 // Variável para status de atualização
@@ -31,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Ativa o status de atualização e oculta o painel
     isUpdating = true;
     resultsPainel.style.display = 'none';
+    commentsContainer.style.display = 'none';
 
     try {
       const dados = await buscarDadosJogador(player);
@@ -46,6 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const rankTitle = document.getElementsByClassName('rankTitle')[0];
       const rankIcon = document.getElementById('rankIcon');
       const bwStats = dados.response.stats.bedwars;
+      const tagClan = document.getElementById('tag_clan');
+      const trueName = dados.response.account.username;
+      const profileTag = dados.response.profile_tag.color;
+      nick.style.color = profileTag;
+      const trueClanColor = dados.response.clan.tag_color;
+      console.log(tagClan)
+      tagClan.style.color = trueClanColor;
       const clanName = dados.response.clan ? dados.response.clan.tag : null; // Define "clanName"
 
       // Verifica se a estrutura de resposta é válida
@@ -63,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let bblr = parseFloat((bedsBroken / bedsLost).toFixed(2));
         
         const ranks = [
+          { rank: 'immortal', fkdr: 20, wlr: 12, bblr: 8},
           { rank: 'Divine', fkdr: 16, wlr: 8, bblr: 6 },
           { rank: 'SS', fkdr: 12, wlr: 6, bblr: 4 },
           { rank: 'S', fkdr: 8, wlr: 4, bblr: 2 },
@@ -144,21 +159,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
             // Inicia o sistema de seleção
             initSelectorListeners(rankColor);
-        
+            
             // Define a imagem atual e a próxima imagem do rank
             if (playerRank !== "DIVINE") {
-                actualRankImg.src = `./assets/icos/${playerRank}.png`;
-                const nextRank = ranks.find((r, i) => r.rank === playerRank && ranks[i - 1])?.rank;
-                if (nextRank) nextRankImg.src = `./assets/icos/${ranks[ranks.findIndex(r => r.rank === playerRank) - 1].rank}.png`;
-                progressContainer.style.display = 'flex';
+              actualRankImg.src = `./assets/icos/${playerRank}.png`;
+              const nextRank = ranks.find((r, i) => r.rank === playerRank && ranks[i - 1])?.rank;
+              // Define a cor inicial e o tamanho da barra de progresso baseado no total
+              barTotalProgress.style.width = `${progressData.total}%`;
+              barTotalProgress.style.backgroundColor = rankColor;
+              progressTextPercent.textContent = `Progresso total: ${progressData.total}%`; // Define o valor inicial
+              if (nextRank) nextRankImg.src = `./assets/icos/${ranks[ranks.findIndex(r => r.rank === playerRank) - 1].rank}.png`;
+              progressContainer.style.display = 'flex';
             } else {
+                progressContainer.destroy();
                 progressContainer.style.display = 'none';
             }
         
-            // Define a cor inicial e o tamanho da barra de progresso baseado no total
-            barTotalProgress.style.width = `${progressData.total}%`;
-            barTotalProgress.style.backgroundColor = rankColor;
-            progressTextPercent.textContent = `Progresso total: ${progressData.total}%`; // Define o valor inicial
             
             toggleSelected(selectedStyle, false, rankColor)
         } catch (error) {
@@ -172,19 +188,25 @@ document.addEventListener('DOMContentLoaded', () => {
         
         
         switch (playerRank) {
+          case 'immortal':
+            comments = 'Esse jogador chegou em um nível que dificilmente em uma partida irá perder, tome cuidado, ele é immortal!';
+            rankColor = '#FF0000';
+            rankIcos = './assets/icos/immortal.png'
+
+            break;
           case 'Divine':
             comments = "Jogador excepcional, capaz de dominar qualquer partida com grande habilidade.";
-            rankColor = '#FF5500';
+            rankColor = '#8500DD';
             rankIcos = './assets/icos/Divine.png';
             break;
           case 'SS':
             comments = "Um adversário impressionante, muito estratégico e com grandes chances de vitória.";
-            rankColor = '#FFC700';
+            rankColor = '#007C25';
             rankIcos = './assets/icos/SS.png';
             break;
           case 'S':
             comments = "Um dos melhores do servidor, um desafio que merece respeito.";
-            rankColor = '#795E00';
+            rankColor = '#007C25';
             rankIcos = './assets/icos/S.png';
             break;
           case 'A':
@@ -223,14 +245,16 @@ document.addEventListener('DOMContentLoaded', () => {
         comment.innerHTML = comments;
         
         if (clanName) {
-          nick.innerHTML = `${player} [${clanName}]`;
+          nick.innerHTML = `${trueName}`;
+          tagClan.innerHTML = ` [${clanName}]`
           console.log('tem clan');
         } else {
-          nick.innerHTML = `${player}`;
+          nick.innerHTML = `${trueName}`;
           console.log('não tem clan');
         }
 
         try{
+          
           headMine.src = 'https://mineskin.eu/armor/body/' + player + '/' + fix_skin_size.toString() +'.png';
           rankIcon.src = rankIcos;
           result.innerHTML = fkdr.toString();
@@ -245,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         isUpdating = false; // Finaliza o status de atualização
         resultsPainel.style.display = 'flex'; // Mostra o painel com dados prontos
+        commentsContainer.style.display = 'flex';
 
       } else {
         console.log('Dados de Bedwars não encontrados para esse jogador.');
