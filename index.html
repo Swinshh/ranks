@@ -59,7 +59,7 @@
             </h1>
                 
             <!--Esse trecho serve para exibir o nick do player que foi pesquisado-->
-            <h2 id="nick">Nick: <strong id="nickname" class="text-result"></strong></h2>
+            <h2 id="nick">Nick: <strong id="nickname" class="text-result"></strong><strong id="tag_clan" class="text-result"></strong></h2>
 
 
             <!--Esse container class="stats" serve para mostrar as taxas de FKDR, WRL e BBLR-->
@@ -97,13 +97,28 @@
 
         <!--Desenha um gráfico usando a biblioteca chart.js com os dados de stats-->
             <canvas id="triangleChart"></canvas>
-
-
-    </div>
+        </div>
+        <div class="comments-container">
+            <h1 class="text-result" style="font-size: 14pt; padding: 12px;">AVISO</h1>
+            <div class="comments">
+                <div class="player_comment">
+                    <div class="header_comment">
+                        <img src="https://mineskin.eu/helm/swinsh/24.png">
+                        <h1 style="color: #ff5555; font-size: 11pt; margin: 0px 6px;">Swinsh</h1>
+                        <h1 style="color: #cfcfcf; font-size: 11pt;"> [BERSERK]</h1>
+                    </div>
+                    <h1 class="player_comment_content" style="color: #cfcfcf; font-size: 11pt; font-weight: 400; margin: 6px 0px;">
+                        Há algumas atualizações futuras vindo aí, uma delas será o rankeamento automatico baseado nesse sistema
+                        de 100 melhores players do MushMC. 
+                    </h1>
+                    <p class="comment-date" style="color: #cfcfcf75; font-size: 8pt;">14/11/2024</p>
+                </div>
+            </div>
+        </div>
 
 
     <footer>
-        <p id="version">Alpha 0.2.0</p>
+        <p id="version">Alpha 0.3.0</p>
         
         <h2 id="footer-text">Esse site foi desenvolvido por <a href="http://discordapp.com/users/1104883571426078800"
             target="_blank" rel="noopener noreferrer">Swinsh</a> 
