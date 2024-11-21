@@ -1,7 +1,8 @@
 import buscarDadosJogador from './scripts/api.js'; // importa dados da api
 import animations from './scripts/animations.js'; // importa animações de tela
 import graphic from './scripts/graph.js'; // importa um sistema de gráficos.
-import theme from './scripts/theme.js'; // importa um sistema pra tema
+import renderTable from './scripts/leaderboard.js'
+renderTable();
 
 let resultsPainel = document.getElementsByClassName('results')[0]; // pegar painel
 
@@ -57,8 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const trueName = dados.response.account.username;
       const profileTag = dados.response.profile_tag.color;
       nick.style.color = profileTag;
-      const trueClanColor = dados.response.clan.tag_color;
-      console.log(tagClan)
+      const trueClanColor = dados.response.clan && dados.response.clan.tag_color ? dados.response.clan.tag_color : null;
       tagClan.style.color = trueClanColor;
       const clanName = dados.response.clan ? dados.response.clan.tag : null; // Define "clanName"
 
@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
           return { fkdr: fkdrProgress.toFixed(2), wlr: wlrProgress.toFixed(2), bblr: bblrProgress.toFixed(2), total: totalProgress };
         }
-
         
 
         function rank() {
@@ -113,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const playerRank = rank();
+
 
         const progressData = progressToNextRank(fkdr, wlr, bblr);
         let comments, rankColor, rankIcos;
@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 element.style.backgroundColor = isSelected ? rankColor : '';
             }
 
-          
         
             // Função para atualizar o texto e a barra de progresso
             function updateProgressDisplay(type) {
@@ -183,13 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
               
         
         }
-
-        console.log(progressData)
         
         
         switch (playerRank) {
           case 'immortal':
-            comments = 'Esse jogador chegou em um nível que dificilmente em uma partida irá perder, tome cuidado, ele é immortal!';
+            comments = 'Este jogador alcançou um nível em que é quase impossível perder uma partida. Tome cuidado: ele é Immortal!';
             rankColor = '#FF0000';
             rankIcos = './assets/icos/immortal.png'
 
