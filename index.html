@@ -23,6 +23,18 @@
     <title>Mush Ranks</title>
 </head>
 <body>
+    <header>
+        <nav>
+          <a href="index.html"><li>Home</li></a>
+          <a href="leaderboard.html"><li>leaderboard</li></a>
+          <a href="ranks.html"><li>ranks</li></a>
+        </nav>
+        <script>
+            const value = document.querySelector('nav');
+            value.children[0].style.color = '#ff5500';
+        </script>
+      </header>
+
     <div class="content">
             <!--texto no topo com título e descrição-->
     <div id="title-container">
@@ -93,7 +105,6 @@
             <!--Esse trecho é um comentário sobre como o jogador é jogando-->
             <h1 id="comment"></h1>
 
-
         </div>
 
         <!--Desenha um gráfico usando a biblioteca chart.js com os dados de stats-->
@@ -109,8 +120,8 @@
                         <h1 style="color: #cfcfcf; font-size: 11pt;"> [BERSERK]</h1>
                     </div>
                     <h1 class="player_comment_content" style="color: #cfcfcf; font-size: 11pt; font-weight: 400; margin: 6px 0px;">
-                        Há algumas atualizações futuras vindo aí, uma delas será o rankeamento automático
-                        de 100 melhores players do MushMC baseado nesse sistema. 
+                        Em breve será adicionado um sistema de reputação de jogador. Compartilhe o site para
+                        mais pessoas conhecerem o meu trabalho. 
                     </h1>
                 </div>
             </div>
@@ -118,7 +129,7 @@
 
 
     <footer>
-        <p id="version">Alpha 0.3.0</p>
+        <p id="version">Alpha 0.4.0</p>
         
         <h2 id="footer-text">Esse site foi desenvolvido por <a href="http://discordapp.com/users/1104883571426078800"
             target="_blank" rel="noopener noreferrer">Swinsh</a> 
