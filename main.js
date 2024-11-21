@@ -6,6 +6,7 @@ renderTable();
 
 let resultsPainel = document.getElementsByClassName('results')[0]; // pegar painel
 
+
 let commentsContainer = document.getElementsByClassName('comments-container')[0]; // pegar comments
 let fix_skin_size = 100; // valor inicial
 
@@ -25,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const search = document.getElementById('searchPlayer');
   const button = document.getElementById('searchButton');
 
+  let icon = './assets/icos/immortal.png';
+  document.querySelector('#website-icon').setAttribute('href', icon);
+  document.querySelector('#index-title').innerHTML = 'Mush Ranks'
+
+
+
   async function script() {
     const player = search.value;
 
@@ -32,8 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Nenhum jogador foi informado.');
       return;
     }
-
-
 
     // Ativa o status de atualização e oculta o painel
     isUpdating = true;
@@ -61,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const trueClanColor = dados.response.clan && dados.response.clan.tag_color ? dados.response.clan.tag_color : null;
       tagClan.style.color = trueClanColor;
       const clanName = dados.response.clan ? dados.response.clan.tag : null; // Define "clanName"
-
+      
       // Verifica se a estrutura de resposta é válida
       if (dados && dados.response && dados.response.stats && dados.response.stats.bedwars) {
         let finalKills = parseInt(bwStats.final_kills);
@@ -259,6 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
           bblRATE.innerHTML = bblr.toString();
           rankDisplay.innerHTML = playerRank;
           rankTitle.style.color = rankColor;
+          document.getElementById('website-icon').setAttribute('href', `https://mineskin.eu/helm/${player}`)
+          document.querySelector('#index-title').innerHTML = trueName;
           
         }catch(error){
           console.error(error)
