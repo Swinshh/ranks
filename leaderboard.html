@@ -1,197 +1,257 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="/assets/icos/Immortal.png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="/assets/icos/Immortal.png" />
 
-  <title>Leaderboard</title>
+    <title>Leaderboard</title>
 
-  <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #121212;
-      color: #cfcfcf;
-    }
-
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px inset #7f7f7f;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    th, td {
-      padding: 16px 42px;
-      text-align: center;
-    }
-
-    .trStyle {
-      border-bottom: 1px solid #7f7f7f;
-    }
-
-    thead {
-      background-color: black;
-      color: white;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #3b3b3b;
-    }
-
-    tbody tr:hover {
-      background-color: #1b1b1b;
-      cursor: context-menu;
-    }
-
-    
-    .selects {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 16px;
-      background-color: black;
-      color: white;
-      border-radius: 12px;
-      border-style: none;
-      font-size: 12px;
-      margin: 4px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #ff5500;
-    }
-    
-    button.selected {
-      background-color: #ff5500;
-      color: white;
-      border-color: #2b2b2b;
-      border: 2px solid #2b2b2b;
-    }
-
-    .content {
-      padding: 32px;
-      width: 100%;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .selects {
-        flex-direction: column;
-        align-items: stretch;
-        width: 100%;
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #121212;
+        color: #cfcfcf;
       }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px inset #7f7f7f;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      th,
+      td {
+        padding: 16px 42px;
+        text-align: center;
+      }
+
+      .trStyle {
+        border-bottom: 1px solid #7f7f7f;
+      }
+
+      thead {
+        background-color: black;
+        color: white;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #3b3b3b;
+      }
+
+      tbody tr:hover {
+        background-color: #1b1b1b;
+        cursor: context-menu;
+      }
+
+      .selects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .skeleton-cell{
+        border-radius: 5px;
+        background-color: #1b1b1b;
+        animation: shimmer 1.5s infinite;
+      }
+
+      @keyframes shimmer {
+  0% {
+    background-color: #3b3b3b;
+  }
+  50% {
+    background-color: #4e4e4e;
+  }
+  100% {
+    background-color: #3b3b3b;
+  }
+}
 
       button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        background-color: black;
+        color: white;
+        border-radius: 12px;
+        border-style: none;
+        font-size: 12px;
+        margin: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #ff5500;
+      }
+
+      button.selected {
+        background-color: #ff5500;
+        color: white;
+        border-color: #2b2b2b;
+        border: 2px solid #2b2b2b;
+      }
+
+      .content {
+        padding: 32px;
         width: 100%;
       }
-    }
 
-    @media (max-width: 600px) {
-      .content {
-        padding: 16px;
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .selects {
+          flex-direction: column;
+          align-items: stretch;
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+        }
       }
 
-      table {
-        font-size: 12px;
-      }
+      @media (max-width: 600px) {
+        .content {
+          padding: 16px;
+        }
 
-      th, td {
-        padding: 8px;
-      }
+        table {
+          font-size: 12px;
+        }
 
-      table {
-        overflow-x: auto;
-        display: block;
-      }
-    }
-  </style>
-</head>
+        th,
+        td {
+          padding: 8px;
+        }
 
-<header>
-  <nav>
-    <a href="index.html"><li>home</li></a>
-    <a href="leaderboard.html"><li>Leaderboard</li></a>
-    <a href="ranks.html"><li>ranks</li></a>
-  </nav>
-  <script>
-    const value = document.querySelector('nav');
-    value.children[1].style.color = '#ff5500';
-  </script>
-</header>
-<body>
-  <div class="content">
-    <h1 style="margin-bottom: 32px; font-size: 14pt;">Ranking dos Melhores Jogadores</h1>
-    <div class="selects">
-      <button type="button" data-rank="all">Todos</button>
-      <button type="button" data-rank="Immortal">
-        <img src="./assets/icos/Immortal.png" width="16px" style="margin-right: 8px;">
-        Immortal
-      </button>
-      <button type="button" data-rank="Divine">
-        <img src="./assets/icos/Divine.png" width="16px" style="margin-right: 8px;">
-        Divine
-      </button>
-      <button type="button" data-rank="SS">
-        <img src="./assets/icos/SS.png" width="16px" style="margin-right: 8px;">
-        SS
-      </button>
-      <button type="button" data-rank="S">
-        <img src="./assets/icos/S.png" width="16px" style="margin-right: 8px;">
-        S
-      </button>
-      <button type="button" data-rank="A">
-        <img src="./assets/icos/A.png" width="16px" style="margin-right: 8px;">
-        A
-      </button>
-      <button type="button" data-rank="B">
-        <img src="./assets/icos/B.png" width="16px" style="margin-right: 8px;">
-        B
-      </button>
-      <button type="button" data-rank="C">
-        <img src="./assets/icos/C.png" width="16px" style="margin-right: 8px;">
-        C
-      </button>
-      <button type="button" data-rank="D">
-        <img src="./assets/icos/D.png" width="16px" style="margin-right: 8px;">
-        D
-      </button>
-      <!-- Outros botões -->
+        table {
+          overflow-x: auto;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <header>
+    <nav>
+      <a href="index.html"><li>home</li></a>
+      <a href="leaderboard.html"><li>Leaderboard</li></a>
+      <a href="ranks.html"><li>ranks</li></a>
+    </nav>
+    <script>
+      const value = document.querySelector("nav");
+      value.children[1].style.color = "#ff5500";
+    </script>
+  </header>
+  <body>
+    
+    <div class="content">
+      <h1 style="margin-bottom: 32px; font-size: 14pt">
+        Ranking dos Melhores Jogadores
+      </h1>
+      <div class="selects">
+        <button type="button" data-rank="all">Todos</button>
+        <button type="button" data-rank="Immortal">
+          <img
+            src="./assets/icos/Immortal.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          Immortal
+        </button>
+        <button type="button" data-rank="Divine">
+          <img
+            src="./assets/icos/Divine.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          Divine
+        </button>
+        <button type="button" data-rank="SS">
+          <img
+            src="./assets/icos/SS.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          SS
+        </button>
+        <button type="button" data-rank="S">
+          <img
+            src="./assets/icos/S.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          S
+        </button>
+        <button type="button" data-rank="A">
+          <img
+            src="./assets/icos/A.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          A
+        </button>
+        <button type="button" data-rank="B">
+          <img
+            src="./assets/icos/B.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          B
+        </button>
+        <button type="button" data-rank="C">
+          <img
+            src="./assets/icos/C.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          C
+        </button>
+        <button type="button" data-rank="D">
+          <img
+            src="./assets/icos/D.png"
+            width="16px"
+            style="margin-right: 8px"
+          />
+          D
+        </button>
+        <!-- Outros botões -->
+      </div>
+      
+
+      <div style="overflow-x: auto; width: 80%;">
+        <table id="ranking-table">
+          <thead>
+            <tr>
+              <th>Nº</th>
+              <th>Jogador</th>
+              <th>FKDR</th>
+              <th>WLR</th>
+              <th>BBLR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Os dados serão inseridos aqui -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <div style="overflow-x: auto;">
-      <table id="ranking-table">
-        <thead>
-          <tr>
-            <th>Nº</th>
-            <th>Jogador</th>
-            <th>FKDR</th>
-            <th>WLR</th>
-            <th>BBLR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Os dados serão inseridos aqui -->
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <script type="module" src="main.js"></script>
-</body>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
