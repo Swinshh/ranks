@@ -5,52 +5,89 @@
       if (!response.ok) {
         throw new Error('Erro ao buscar o ranking.');
       }
-      return await response.json();
+      return response.json();
     } catch (error) {
       console.error(error);
       return [];
     }
   }
 
-  // Função para renderizar a tabela
-  async function renderTable(rankFilter = 'all') {
-    try {
-      const ranking = await fetchRanking();
-      const tableBody = document.querySelector('#ranking-table tbody');
-      tableBody.innerHTML = ''; // Limpa qualquer conteúdo existente
-  
-      let visibleIndex = 1; // Índice baseado na renderização visível
-  
-      ranking.forEach((player) => {
-        if (rankFilter !== 'all' && player.stats.rank.toLowerCase() !== rankFilter.toLowerCase()) return;
-  
-        const row = document.createElement('tr');
-        const playerHeadSkin = `https://mineskin.eu/helm/${player.username}/24`;
-        const nameColor = player.colors.nick_color;
-        const tagClan = player.tag_clan ? `[${player.tag_clan}]` : "";
-        const clanColor = player.tag_clan ? player.colors.clan_color : 'white';
-  
-        row.classList.add('trStyle');
-        row.innerHTML = `
-          <td style="text-align: center">${visibleIndex}º</td>
-          <td style="display: flex">
-            <img src="../assets/icos/${player.stats.rank}.png" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 24px;">
-            <img src="${playerHeadSkin}" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
-            <p style="color: ${nameColor}">${player.username}</p>
-            <p style="color: ${clanColor}; margin-left: 8px">${tagClan}</p>
-          </td>
-          <td style="text-align: center">${player.stats.fkdr || 0}</td>
-          <td style="text-align: center">${player.stats.wlr || 0}</td>
-          <td style="text-align: center">${player.stats.bblr || 0}</td>
-        `;
-  
-        tableBody.appendChild(row);
-        visibleIndex++; // Incrementa o índice apenas para itens renderizados
-      });
-    } catch (error) {
-      console.error('Erro ao renderizar a tabela:', error);
-    }
+
+ // Função para criar um row genérico com placeholders
+function createSkeletonRow() {
+  const row = document.createElement('tr');
+  row.classList.add('trStyle'); // Usa o estilo padrão da tabela
+  row.innerHTML = `
+    <td style="text-align: center">
+      <div class="skeleton-cell" style="width: 16px; height: 16px; margin-right: 8px;"></div>
+    </td>
+    <td style="display: flex; justify-content: center; align-items: center;">
+      <div class="skeleton-cell" style="width: 16px; height: 16px; margin-right: 8px;"></div>
+      <div class="skeleton-cell" style="width: 24px; height: 24px; margin-right: 8px;"></div>
+      <div class="skeleton-cell" style="width: 100px; height: 16px; margin-right: 8px;"></div>
+      <div class="skeleton-cell" style="width: 50px; height: 16px;"></div>
+    </td>
+    <td style="text-align: center">
+      <div class="skeleton-cell" style="width: 40px; height: 16px;"></div>
+    </td>
+    <td style="text-align: center">
+      <div class="skeleton-cell" style="width: 40px; height: 16px;"></div>
+    </td>
+    <td style="text-align: center">
+      <div class="skeleton-cell" style="width: 40px; height: 16px;"></div>
+    </td>
+  `;
+  return row;
+}
+
+// Função principal para renderizar a tabela
+async function renderTable(rankFilter = 'all') {
+  const tableBody = document.querySelector('#ranking-table tbody');
+  const loadingElement = document.getElementById('loading');
+  const tableElement = document.getElementById('ranking-table');
+
+  // Exibe placeholders enquanto carrega
+  tableBody.innerHTML = '';
+  for (let i = 0; i < 10; i++) { // Exibe 5 linhas placeholders
+    tableBody.appendChild(createSkeletonRow());
   }
+  tableElement.style.display = 'table';
+
+  try {
+    const ranking = await fetchRanking(); // Busca os dados da API
+    tableBody.innerHTML = ''; // Limpa os placeholders
+
+    let visibleIndex = 1;
+    ranking.forEach((player) => {
+      if (rankFilter !== 'all' && player.stats.rank.toLowerCase() !== rankFilter.toLowerCase()) return;
+
+      const row = createSkeletonRow(); // Reutiliza o esqueleto
+      const playerHeadSkin = `https://mineskin.eu/helm/${player.username}/24`;
+      const nameColor = player.colors.nick_color;
+      const tagClan = player.tag_clan ? `[${player.tag_clan}]` : "";
+      const clanColor = player.tag_clan ? player.colors.clan_color : 'white';
+
+      row.innerHTML = `
+        <td style="text-align: center">${visibleIndex}º</td>
+        <td style="display: flex">
+          <img src="../assets/icos/${player.stats.rank}.png" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 24px;">
+          <img src="${playerHeadSkin}" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
+          <p style="color: ${nameColor}">${player.username}</p>
+          <p style="color: ${clanColor}; margin-left: 8px">${tagClan}</p>
+        </td>
+        <td style="text-align: center">${player.stats.fkdr || 0}</td>
+        <td style="text-align: center">${player.stats.wlr || 0}</td>
+        <td style="text-align: center">${player.stats.bblr || 0}</td>
+      `;
+
+      tableBody.appendChild(row);
+      visibleIndex++;
+    });
+  } catch (error) {
+    console.error('Erro ao renderizar a tabela:', error);
+  }
+}
+
   
   
   function initRankSelectors() {
