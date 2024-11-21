@@ -7,35 +7,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/assets/icos/Immortal.png">
     <title>info</title>
 </head>
 <body>
-
+    <header>
+        <nav>
+          <a href="index.html"><li>home</li></a>
+          <a href="leaderboard.html"><li>leaderboard</li></a>
+          <a href="ranks.html"><li>Ranks</li></a>
+        </nav>
+        <script>
+            const value = document.querySelector('nav');
+            value.children[2].style.color = '#ff5500';
+        </script>
+      </header>
     <!---->
     <div class="ranksContainer">
-        <!---->
 
-        <!---->
-        <h1 class="rankTop"><a href="index.html" class="back-button"><span class="arrow">&#8592;</span> </a>RANKS</h1>
-        <div class="rankInfo">
-            <div class="headInfo hidden-bottom">
-                <img src="./assets/icos/Divine.png" alt="rank" width="64px">
+        <div class="rankInfo hidden-bottom">
+            <div class="headInfo">
+                <img src="./assets/icos/Immortal.png" alt="rank" width="64px">
                 <div>
-
-                    <h1 class="rankHead">Rank Divine</h1>
+        
+                    <h1 class="rankHead">Rank Immortal</h1>
                     <p class="rankDesc">
-                        O maior ranking do sistema, onde só os melhores dos 
-                        melhores chegam. Dá para contar nos dedos os players que 
-                        atingiram esse patamar. Para alcançar o Divine, você precisa ter um 
-                        FKDR (Final Kills ÷ Final Deaths) de pelo menos 16, 
-                        um WLR (Wins ÷ Losses) de 8 e um BBLR (Beds Broken ÷ Beds Lost) 
-                        de 6. Os jogadores nesse rank são verdadeiras lendas, respeitados 
-                        por todos.
+                        O rank Immortal é um dos patamares mais prestigiados do MushMC, reservado para 
+                        jogadores que ultrapassaram as habilidades comuns e são referências no Bedwars. 
+                        Para alcançar este nível, é necessário um FKDR de 20, WLR de 12 e BBLR de 8. 
+                        Jogadores desse rank são conhecidos por sua precisão, controle impecável e 
+                        domínio total das táticas avançadas, sendo admirados por toda a comunidade.
                     </p>
-
+        
                 </div>
             </div>
         </div>
+        
+    
+        <div class="rankInfo hidden-bottom">
+            <div class="headInfo">
+                <img src="./assets/icos/Divine.png" alt="rank" width="64px">
+                <div>
+        
+                    <h1 class="rankHead">Rank Divine</h1>
+                    <p class="rankDesc">
+                        O Rank Divine é reservado para jogadores excepcionais que dominam o Bedwars 
+                        com maestria e constância. Embora não seja mais o topo absoluto, é um dos níveis 
+                        mais difíceis de alcançar no MushMC, destacando-se pela exclusividade. Para atingir 
+                        este rank, você precisa ter um FKDR de pelo menos 16, um WLR de 8 e um BBLR de 6. 
+                        Jogadores no Divine são respeitados e temidos, frequentemente servindo como 
+                        inspiração para outros que buscam atingir o próximo nível.
+                    </p>
+        
+                </div>
+            </div>
+        </div>
+        
 
 
         <div class="rankInfo hidden-bottom">
