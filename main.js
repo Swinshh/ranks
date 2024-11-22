@@ -72,16 +72,16 @@ document.addEventListener("DOMContentLoaded", () => {
         dados.response.stats &&
         dados.response.stats.bedwars
       ) {
-        let finalKills = parseInt(bwStats.final_kills);
+        let finalKills = bwStats && bwStats.final_kills ? parseInt(bwStats.final_kills) : 0;
         let finalDeaths = parseInt(bwStats.final_deaths);
         let fkdr = parseFloat((finalKills / finalDeaths).toFixed(2));
 
-        let Wins = parseInt(bwStats.wins);
-        let Losses = parseInt(bwStats.losses);
+        let Wins = bwStats && bwStats.wins ? parseInt(bwStats.wins) : 0;
+        let Losses = bwStats && bwStats.losses ? parseInt(bwStats.losses) : 0;
         let wlr = parseFloat((Wins / Losses).toFixed(2));
 
-        let bedsBroken = parseInt(bwStats.beds_broken);
-        let bedsLost = parseInt(bwStats.beds_lost);
+        let bedsBroken = bwStats && bwStats.beds_broken ? parseInt(bwStats.beds_broken) : 0;
+        let bedsLost = bwStats && bwStats.beds_lost ? parseInt(bwStats.beds_lost) : 0;
         let bblr = parseFloat((bedsBroken / bedsLost).toFixed(2));
 
         const ranks = [
