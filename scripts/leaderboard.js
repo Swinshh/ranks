@@ -48,24 +48,31 @@ async function renderTable(rankFilter = 'all') {
 
   // Exibe placeholders enquanto carrega
   tableBody.innerHTML = '';
-  for (let i = 0; i < 10; i++) { // Exibe 5 linhas placeholders
+  for (let i = 0; i < 10; i++) {
     tableBody.appendChild(createSkeletonRow());
   }
   tableElement.style.display = 'table';
 
   try {
-    const ranking = await fetchRanking(); // Busca os dados da API
+    const ranking = await fetchRanking(); // Busca todos os dados da API
     tableBody.innerHTML = ''; // Limpa os placeholders
+
+    // Aplica filtro por rank, se necessário
+    const filteredRanking = ranking.filter((player) =>
+      rankFilter === 'all' ? true : player.stats.rank.toLowerCase() === rankFilter.toLowerCase()
+    );
+
+    // Mostra no máximo 100 jogadores após o filtro
+    const visibleRanking = filteredRanking.slice(0, 100);
+
     let visibleIndex = 1;
-    ranking.slice(0, 100).forEach((player) => {
-      if (rankFilter !== 'all' && player.stats.rank.toLowerCase() !== rankFilter.toLowerCase()) return;
-    
-      const row = createSkeletonRow(); // Reutiliza o esqueleto
+    visibleRanking.forEach((player) => {
+      const row = createSkeletonRow();
       const playerHeadSkin = `https://mineskin.eu/helm/${player.username}/24`;
       const nameColor = player.colors.nick_color;
       const tagClan = player.tag_clan ? `[${player.tag_clan}]` : "";
       const clanColor = player.tag_clan ? player.colors.clan_color : 'white';
-    
+
       row.innerHTML = `
         <td style="text-align: center">${visibleIndex}º</td>
         <td style="display: flex">
@@ -78,10 +85,10 @@ async function renderTable(rankFilter = 'all') {
         <td style="text-align: center">${player.stats.wlr || 0}</td>
         <td style="text-align: center">${player.stats.bblr || 0}</td>
       `;
-    
+
       tableBody.appendChild(row);
       visibleIndex++;
-    });    
+    });
   } catch (error) {
     console.error('Erro ao renderizar a tabela:', error);
   }
