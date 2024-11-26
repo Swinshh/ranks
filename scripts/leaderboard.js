@@ -56,17 +56,16 @@ async function renderTable(rankFilter = 'all') {
   try {
     const ranking = await fetchRanking(); // Busca os dados da API
     tableBody.innerHTML = ''; // Limpa os placeholders
-
     let visibleIndex = 1;
-    ranking.forEach((player) => {
+    ranking.slice(0, 100).forEach((player) => {
       if (rankFilter !== 'all' && player.stats.rank.toLowerCase() !== rankFilter.toLowerCase()) return;
-
+    
       const row = createSkeletonRow(); // Reutiliza o esqueleto
       const playerHeadSkin = `https://mineskin.eu/helm/${player.username}/24`;
       const nameColor = player.colors.nick_color;
       const tagClan = player.tag_clan ? `[${player.tag_clan}]` : "";
       const clanColor = player.tag_clan ? player.colors.clan_color : 'white';
-
+    
       row.innerHTML = `
         <td style="text-align: center">${visibleIndex}º</td>
         <td style="display: flex">
@@ -79,10 +78,10 @@ async function renderTable(rankFilter = 'all') {
         <td style="text-align: center">${player.stats.wlr || 0}</td>
         <td style="text-align: center">${player.stats.bblr || 0}</td>
       `;
-
+    
       tableBody.appendChild(row);
       visibleIndex++;
-    });
+    });    
   } catch (error) {
     console.error('Erro ao renderizar a tabela:', error);
   }
