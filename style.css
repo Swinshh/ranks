@@ -46,7 +46,7 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   align-items: center;
   margin: auto;
-  width: 80%;
+  width: auto;
   height: auto;
 }
 
@@ -189,12 +189,12 @@ h2 {
 .results {
   display: none;
   height: auto;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   width: auto;
   flex-wrap: no-wrap;
   padding: 32px 0px;
-  overflow: hidden;
 
 }
 
@@ -344,7 +344,7 @@ form {
   flex-direction: row;
   gap: 24px;
   margin: 12px 0px;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
 }
 
 .options{
@@ -580,9 +580,9 @@ header{
 
   .results {
     flex-direction: row-reverse;
-    height: 100vh;
+    flex-direction: column;
     flex-wrap: wrap;
-    overflow-y: hidden; /* Ou overflow-y conforme o sentido do overflow */
+    overflow-x: hidden; /* Ou overflow-y conforme o sentido do overflow */
 }
 
 .progress-container{
@@ -592,6 +592,10 @@ header{
 
 .selectors{
   flex-grow: 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 40%;
 }
 
 .options{
@@ -611,6 +615,7 @@ header{
   .data{
     width: 100%;
     flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
   }
 
@@ -628,5 +633,3 @@ header{
   }
 
 }
-
-
