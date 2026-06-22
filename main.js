@@ -22,19 +22,27 @@ animations(); // Roda as animação de './scripts/animations.js'.
 document.addEventListener("DOMContentLoaded", () => {
   const search = document.getElementById("searchPlayer");
   const button = document.getElementById("searchButton");
+  const params = new URLSearchParams(window.location.search);
+  const playerFromUrl = params.get("player");
 
   let icon = "./assets/icos/immortal.png";
   document.querySelector("#website-icon").setAttribute("href", icon);
   document.querySelector("#index-title").innerHTML = "Mush Ranks";
 
   async function script() {
-    const player = search.value;
+    const player = search.value.trim();
 
     if (!player) {
       console.error("Nenhum jogador foi informado.");
       return;
     }
 
+// Atualiza a URL sem recarregar a página
+const url = new URL(window.location);
+
+url.searchParams.set("player", player);
+
+window.history.replaceState({}, "", url);
     // Ativa o status de atualização e oculta o painel
     isUpdating = true;
     resultsPainel.style.display = "none";
@@ -381,6 +389,10 @@ document.addEventListener("DOMContentLoaded", () => {
       script();
     }
   });
+  if (playerFromUrl) {
+  search.value = playerFromUrl;
+  script();
+}
 });
 
 //sim.
