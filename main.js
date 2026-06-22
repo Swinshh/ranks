@@ -393,6 +393,25 @@ window.history.replaceState({}, "", url);
   search.value = playerFromUrl;
   script();
 }
+  const playerCell = document.querySelectorAll(".player-cell");
+  console.log(playerCell)
+  if(playerCell){
+      playerCell.forEach((cell) => {
+      
+        cell.addEventListener("click", () => {
+      
+          const nickname = cell.dataset.player;
+      
+          window.location.href =
+            `../index.html?player=${encodeURIComponent(nickname)}`;
+      
+        });
+      
+      });
+  }else{
+    console.log(playerCell)
+  }
+  
 });
 
 //sim.
