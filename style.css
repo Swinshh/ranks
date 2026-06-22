@@ -358,6 +358,10 @@ form {
   opacity: 50%;
 }
 
+.options:hover{
+  background-color: var(--low-white-color);
+}
+
 .selected{
   opacity: 100%;
   border-color: var(--black-text);
