@@ -75,10 +75,10 @@ async function renderTable(rankFilter = 'all') {
 
       row.innerHTML = `
         <td style="text-align: center">${visibleIndex}º</td>
-        <td style="display: flex">
+        <td style="display: flex" class="player-cell">
           <img src="../assets/icos/${player.stats.rank}.png" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 24px;">
           <img src="${playerHeadSkin}" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
-          <p style="color: ${nameColor}">${player.username}</p>
+          <p style="color: ${nameColor}" class="nickname">${player.username}</p>
           <p style="color: ${clanColor}; margin-left: 8px">${tagClan}</p>
         </td>
         <td style="text-align: center">${player.stats.fkdr || 0}</td>
