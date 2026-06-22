@@ -254,27 +254,5 @@
     </div>
 
     <script type="module" src="main.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", ()=>{
-        const playerCell = document.querySelectorAll(".player-cell");
-        console.log(playerCell)
-        if(playerCell){
-            playerCell.forEach((cell) => {
-            
-              cell.addEventListener("click", () => {
-            
-                const nickname = cell.dataset.player;
-            
-                window.location.href =
-                  `../index.html?player=${encodeURIComponent(nickname)}`;
-            
-              });
-            
-            });
-        }else{
-          console.log(playerCell)
-        }
-      });
-    </script>
   </body>
 </html>
