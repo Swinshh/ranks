@@ -254,5 +254,14 @@
     </div>
 
     <script type="module" src="main.js"></script>
+    <script>
+      document.querySelectorAll(".player-cell").forEach((cell) => {
+        cell.addEventListener("click", () => {
+
+          const nickname = cell.querySelector(".nickname").textContent.trim();
+          window.location.href = `../index.html?player=${encodeURIComponent(nickname)}`;
+        });
+      });
+    </script>
   </body>
 </html>
