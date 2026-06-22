@@ -75,7 +75,7 @@ async function renderTable(rankFilter = 'all') {
 
       row.innerHTML = `
         <td style="text-align: center">${visibleIndex}º</td>
-        <td style="display: flex" class="player-cell" data-player="robloxlover72">
+        <td style="display: flex" class="player-cell" data-player="${player.username}">
           <img src="../assets/icos/${player.stats.rank}.png" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 24px;">
           <img src="${playerHeadSkin}" alt="${player.username}" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
           <p style="color: ${nameColor}">${player.username}</p>
