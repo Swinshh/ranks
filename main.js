@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const playerFromUrl = params.get("player");
   let icon = "./assets/icos/immortal.png";
-  document.querySelector("#website-icon")?.setAttribute("href", icon);
-  document.querySelector("#index-title")?.innerHTML = "Mush Ranks";
+  document.querySelector("#website-icon").setAttribute("href", icon);
+  document.querySelector("#index-title").innerHTML = "Mush Ranks";
 
   async function script() {
     const player = search.value.trim();
