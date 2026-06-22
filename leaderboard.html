@@ -255,6 +255,8 @@
 
     <script type="module" src="main.js"></script>
     <script>
+      document.addEventListener("DOMContentLoaded", ()=>{
+        
       document.querySelectorAll(".player-cell").forEach((cell) => {
 
         cell.addEventListener("click", () => {
@@ -264,6 +266,7 @@
           window.location.href = `../index.html?player=${encodeURIComponent(nickname)}`;
 
         });
+      })
 
       });
     </script>
