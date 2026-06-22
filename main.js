@@ -20,14 +20,14 @@ let isUpdating = false; // Inicia como falso
 animations(); // Roda as animação de './scripts/animations.js'.
 
 document.addEventListener("DOMContentLoaded", () => {
+  checkUserLeaderboard()
   const search = document.getElementById("searchPlayer");
   const button = document.getElementById("searchButton");
   const params = new URLSearchParams(window.location.search);
   const playerFromUrl = params.get("player");
-
   let icon = "./assets/icos/immortal.png";
-  document.querySelector("#website-icon").setAttribute("href", icon);
-  document.querySelector("#index-title").innerHTML = "Mush Ranks";
+  document.querySelector("#website-icon")?.setAttribute("href", icon);
+  document.querySelector("#index-title")?.innerHTML = "Mush Ranks";
 
   async function script() {
     const player = search.value.trim();
@@ -393,6 +393,7 @@ window.history.replaceState({}, "", url);
   search.value = playerFromUrl;
   script();
 }
+function checkUserLeaderboard(){
   const playerCell = document.querySelectorAll(".player-cell");
   console.log(playerCell)
   if(playerCell){
@@ -411,6 +412,7 @@ window.history.replaceState({}, "", url);
   }else{
     console.log(playerCell)
   }
+}
   
 });
 
