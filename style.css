@@ -52,14 +52,13 @@ body::-webkit-scrollbar-thumb {
 
 header{
   display: flex;
+  justify-content: space-between;
   width: 100%;
   background-color: black;
 }
 
 nav{
-  margin: auto;
   display: flex;
-  padding: 24px 0;
   gap: 32px;
 }
 
