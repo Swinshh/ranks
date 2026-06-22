@@ -63,6 +63,11 @@ nav{
   display: flex;
   gap: 32px;
 }
+.links-nav{
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
 
 header nav a {
   color: #cfcfcf;
