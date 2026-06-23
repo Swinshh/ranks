@@ -383,10 +383,17 @@ form {
 
 .comments{
   display: flex;
+  flex-direction: column;
   width: 90%;
   height: auto;
   background-color: #212121;
   border-radius: 12px;
+}
+
+.comments-style{
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 }
 
 .player_comment{

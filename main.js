@@ -142,7 +142,7 @@ window.history.replaceState({}, "", url);
         
           if (currentRankIndex === -1 || currentRankIndex === 0) {
             // Já no rank mais alto ou nenhum rank encontrado
-            return "Parabéns! Você já está no rank mais alto.";
+            return `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;">Parabéns! Você já está no rank mais alto.</p>`;
           }
         
           const nextRank = ranks[currentRankIndex - 1];
@@ -180,17 +180,17 @@ window.history.replaceState({}, "", url);
           const tips = [];
           if (finalKillsImprove > 0) {
             tips.push(
-              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa matar mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa matar mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.</p>`
             );
           }
           if (winsImprove > 0) {
             tips.push(
-              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa ganhar mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank.`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa ganhar mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank. </p>`
             );
           }
           if (bedsBrokenImprove > 0) {
             tips.push(
-              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa quebrar mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank.`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa quebrar mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank. </p>`
             );
           }
         
