@@ -180,17 +180,17 @@ window.history.replaceState({}, "", url);
           const tips = [];
           if (finalKillsImprove > 0) {
             tips.push(
-              `Você precisa matar mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.`
+              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa matar mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.`
             );
           }
           if (winsImprove > 0) {
             tips.push(
-              `Você precisa ganhar mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank.`
+              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa ganhar mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank.`
             );
           }
           if (bedsBrokenImprove > 0) {
             tips.push(
-              `Você precisa quebrar mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank.`
+              `<img src="./assets/icos/topic.png" alt="ranks" style="width: 0.5rem;"> Você precisa quebrar mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank.`
             );
           }
         
