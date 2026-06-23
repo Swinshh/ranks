@@ -183,6 +183,9 @@ h2 {
 }
 
 #comment {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   color: var(--low-black-text);
   font-weight: 400;
   font-size: 11pt;
@@ -383,12 +386,10 @@ form {
 
 .comments{
   display: flex;
-  flex-direction: column;
   width: 90%;
   height: auto;
   background-color: #212121;
   border-radius: 12px;
-  gap: 2rem;
 }
 
 .comments-style{
