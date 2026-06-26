@@ -112,6 +112,8 @@ window.history.replaceState({}, "", url);
           return "E";
         }
 
+        const playerRank = rank();
+
         function progressToNextRank(fkdr, wlr, bblr) {
           const currentRankIndex = ranks.findIndex(
             (r) => r.rank === playerRank
@@ -139,10 +141,14 @@ window.history.replaceState({}, "", url);
           const currentRankIndex = ranks.findIndex(
             (rank) => fkdr >= rank.fkdr && wlr >= rank.wlr && bblr >= rank.bblr
           );
+
+          if (playerRank == "E"){
+            return `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;">Sem dados para obter Rank.</p>`
+          }
         
           if (currentRankIndex === -1 || currentRankIndex === 0) {
             // Já no rank mais alto ou nenhum rank encontrado
-            return `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;">Parabéns! Você já está no rank mais alto.</p>`;
+            return `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;">Parabéns! Você já está no topo dos ranks.</p>`;
           }
         
           const nextRank = ranks[currentRankIndex - 1];
@@ -180,17 +186,17 @@ window.history.replaceState({}, "", url);
           const tips = [];
           if (finalKillsImprove > 0) {
             tips.push(
-              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa matar mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.</p>`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Mate mais ${finalKillsImprove.toLocaleString("pt-BR")} inimigos para subir ao próximo rank.</p>`
             );
           }
           if (winsImprove > 0) {
             tips.push(
-              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa ganhar mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank. </p>`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Ganhe mais ${winsImprove.toLocaleString("pt-BR")} partidas para subir ao próximo rank. </p>`
             );
           }
           if (bedsBrokenImprove > 0) {
             tips.push(
-              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Você precisa quebrar mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank. </p>`
+              `<p class="comments-style"><img src="./assets/icos/topic.png" alt="ranks" style="width: 0.8rem;"> Quebre mais ${bedsBrokenImprove.toLocaleString("pt-BR")} camas para subir ao próximo rank. </p>`
             );
           }
         
@@ -198,11 +204,6 @@ window.history.replaceState({}, "", url);
         }
           
        const dicas = whatImprove();
-      
-
-
-        
-        const playerRank = rank();
 
         const progressData = progressToNextRank(fkdr, wlr, bblr);
         let comments, rankColor, rankIcos;
